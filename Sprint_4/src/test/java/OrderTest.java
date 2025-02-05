@@ -10,6 +10,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 @RunWith(Parameterized.class)
 public class OrderTest {
     private WebDriver driver;
@@ -85,7 +88,7 @@ public class OrderTest {
         objOrderpage.clickButtonYes();
 
         //Открылось окошко, что заказ оформлен
-        objOrderpage.isOrderPlaced("Заказ оформлен", objOrderpage.getTextOrderPlaced());
+        assertThat(objOrderpage.getTextOrderPlaced(),is("Заказ оформлен"));
     }
 
     @After

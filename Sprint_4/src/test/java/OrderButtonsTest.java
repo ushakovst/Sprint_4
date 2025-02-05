@@ -8,6 +8,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class OrderButtonsTest {
 
     private WebDriver driver;
@@ -26,7 +29,8 @@ public class OrderButtonsTest {
         HomePageLocators objHomepage = new HomePageLocators(driver);
         objHomepage.clickButtonHeaderOrder();
         OrderPageLocators objOrderpage = new OrderPageLocators(driver);
-        objOrderpage.isOpenedPage("Для кого самокат", objOrderpage.getHeaderText());
+        //Открылась ли страница? Сравниваем ожидаемое значение с фактическим
+        assertThat("Для кого самокат", is(objOrderpage.getHeaderText()));
     }
 
     @Test
@@ -34,7 +38,8 @@ public class OrderButtonsTest {
         HomePageLocators objHomepage = new HomePageLocators(driver);
         objHomepage.clickButtonPageOrder();
         OrderPageLocators objOrderpage = new OrderPageLocators(driver);
-        objOrderpage.isOpenedPage("Для кого самокат", objOrderpage.getHeaderText());
+        //Открылась ли страница? Сравниваем ожидаемое значение с фактическим
+        assertThat("Для кого самокат", is(objOrderpage.getHeaderText()));
     }
 
     @After

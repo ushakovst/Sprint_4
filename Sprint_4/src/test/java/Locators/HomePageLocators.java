@@ -12,7 +12,7 @@ public class HomePageLocators {
     private final By buttonCookie = By.id("rcc-confirm-button");
 
     //локаторы кнопок выпадающего списка
-    private final By buttonQuestion1 = By.id("accordion__heading-0");
+    private final By buttonQuestion1 = By.xpath(".//div[text()='Сколько это стоит? И как оплатить?']");
     private final By buttonQuestion2 = By.id("accordion__heading-1");
     private final By buttonQuestion3 = By.id("accordion__heading-2");
     private final By buttonQuestion4 = By.id("accordion__heading-3");
@@ -22,14 +22,14 @@ public class HomePageLocators {
     private final By buttonQuestion8 = By.id("accordion__heading-7");
 
     //локаторы для получения ответа на вопросы
-    private final By answer1 = By.id("accordion__panel-0");
-    private final By answer2 = By.id("accordion__panel-1");
-    private final By answer3 = By.id("accordion__panel-2");
-    private final By answer4 = By.id("accordion__panel-3");
-    private final By answer5 = By.id("accordion__panel-4");
-    private final By answer6 = By.id("accordion__panel-5");
-    private final By answer7 = By.id("accordion__panel-6");
-    private final By answer8 = By.id("accordion__panel-7");
+    private final By answer1 = By.xpath(".//div[@id='accordion__panel-0']/p");
+    private final By answer2 = By.xpath(".//div[@id='accordion__panel-1']/p");
+    private final By answer3 = By.xpath(".//div[@id='accordion__panel-2']/p");
+    private final By answer4 = By.xpath(".//div[@id='accordion__panel-3']/p");
+    private final By answer5 = By.xpath(".//div[@id='accordion__panel-4']/p");
+    private final By answer6 = By.xpath(".//div[@id='accordion__panel-5']/p");
+    private final By answer7 = By.xpath(".//div[@id='accordion__panel-6']/p");
+    private final By answer8 = By.xpath(".//div[@id='accordion__panel-7']/p");
 
     //локатор кнопки "Заказать" в шапке домашней страницы
     private final By buttonHeaderOrder = By.cssSelector(".Button_Button__ra12g");
@@ -109,5 +109,30 @@ public class HomePageLocators {
     }
     public String getAnswer8() {
         return driver.findElement(answer8).getText();
+    }
+
+    public boolean isAnswer1visioble() {
+        return driver.findElement(answer1).isDisplayed();
+    }
+    public boolean isAnswer2visioble() {
+        return driver.findElement(answer2).isDisplayed();
+    }
+    public boolean isAnswer3visioble() {
+        return driver.findElement(answer3).isDisplayed();
+    }
+    public boolean isAnswer4visioble() {
+        return driver.findElement(answer4).isDisplayed();
+    }
+    public boolean isAnswer5visioble() {
+        return driver.findElement(answer5).isDisplayed();
+    }
+    public boolean isAnswer6visioble() {
+        return driver.findElement(answer6).isDisplayed();
+    }
+    public boolean isAnswer7visioble() {
+        return driver.findElement(answer7).isDisplayed();
+    }
+    public boolean isAnswer8visioble() {
+        return driver.findElement(answer8).isDisplayed();
     }
 }

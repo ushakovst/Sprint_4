@@ -6,42 +6,36 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class HomePageLocators {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     //локатор кнопки для закрытия куки "да все привыкли"
-    private By buttonCookie = By.id("rcc-confirm-button");
-
-    //
+    private final By buttonCookie = By.id("rcc-confirm-button");
 
     //локаторы кнопок выпадающего списка
-    private By buttonQuestion1 = By.id("accordion__heading-0");
-    private By buttonQuestion2 = By.id("accordion__heading-1");
-    private By buttonQuestion3 = By.id("accordion__heading-2");
-    private By buttonQuestion4 = By.id("accordion__heading-3");
-    private By buttonQuestion5 = By.id("accordion__heading-4");
-    private By buttonQuestion6 = By.id("accordion__heading-5");
-    private By buttonQuestion7 = By.id("accordion__heading-6");
-    private By buttonQuestion8 = By.id("accordion__heading-7");
-
-
+    private final By buttonQuestion1 = By.id("accordion__heading-0");
+    private final By buttonQuestion2 = By.id("accordion__heading-1");
+    private final By buttonQuestion3 = By.id("accordion__heading-2");
+    private final By buttonQuestion4 = By.id("accordion__heading-3");
+    private final By buttonQuestion5 = By.id("accordion__heading-4");
+    private final By buttonQuestion6 = By.id("accordion__heading-5");
+    private final By buttonQuestion7 = By.id("accordion__heading-6");
+    private final By buttonQuestion8 = By.id("accordion__heading-7");
 
     //локаторы для получения ответа на вопросы
-    private By answer1 = By.id("accordion__panel-0");
-    private By answer2 = By.id("accordion__panel-1");
-    private By answer3 = By.id("accordion__panel-2");
-    private By answer4 = By.id("accordion__panel-3");
-    private By answer5 = By.id("accordion__panel-4");
-    private By answer6 = By.id("accordion__panel-5");
-    private By answer7 = By.id("accordion__panel-6");
-    private By answer8 = By.id("accordion__panel-7");
-
-
+    private final By answer1 = By.id("accordion__panel-0");
+    private final By answer2 = By.id("accordion__panel-1");
+    private final By answer3 = By.id("accordion__panel-2");
+    private final By answer4 = By.id("accordion__panel-3");
+    private final By answer5 = By.id("accordion__panel-4");
+    private final By answer6 = By.id("accordion__panel-5");
+    private final By answer7 = By.id("accordion__panel-6");
+    private final By answer8 = By.id("accordion__panel-7");
 
     //локатор кнопки "Заказать" в шапке домашней страницы
-    private By buttonHeaderOrder = By.cssSelector(".Button_Button__ra12g");
+    private final By buttonHeaderOrder = By.cssSelector(".Button_Button__ra12g");
 
     //локатор кнопки "Заказать"
-    private By buttonPageOrder = By.cssSelector(".Button_Button__ra12g.Button_Middle__1CSJM");
+    private final By buttonPageOrder = By.cssSelector(".Button_Button__ra12g.Button_Middle__1CSJM");
 
     //конструктор вебдрайвера
     public HomePageLocators (WebDriver driver) {
@@ -64,7 +58,6 @@ public class HomePageLocators {
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
         driver.findElement(buttonPageOrder).click();
     }
-
 
     //клик на кнопки выпадающего списка
     public void clickButtonQuestion1() {
@@ -92,7 +85,6 @@ public class HomePageLocators {
         driver.findElement(buttonQuestion8).click();
     }
 
-
     //геттеры получения текста ответа на вопрос
     public String getAnswer1() {
         return driver.findElement(answer1).getText();
@@ -117,10 +109,5 @@ public class HomePageLocators {
     }
     public String getAnswer8() {
         return driver.findElement(answer8).getText();
-    }
-
-    //сравнение текста
-    public void isCorrectText(String actual, String expected) {
-        expected.equalsIgnoreCase(actual); //работает только через equals
     }
 }

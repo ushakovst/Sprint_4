@@ -85,7 +85,7 @@ public class OrderTest {
         //Клик на кнопку "Заказать", для подтверждения заказа
         objOrderpage.clickButtonOrder();
         //Клик на кнопку "Да"
-        objOrderpage.clickButtonYes();
+        objOrderpage.clickButtonYes(); //тест падает на подтверждении заказа
 
         //Открылось окошко, что заказ оформлен
         assertThat(objOrderpage.getTextOrderPlaced(),is("Заказ оформлен"));

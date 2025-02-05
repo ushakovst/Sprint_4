@@ -12,7 +12,7 @@ public class HomePageLocators {
     private final By buttonCookie = By.id("rcc-confirm-button");
 
     //локаторы кнопок выпадающего списка
-    private final By buttonQuestion1 = By.xpath(".//div[text()='Сколько это стоит? И как оплатить?']");
+    private final By buttonQuestion1 = By.id("accordion__heading-0");
     private final By buttonQuestion2 = By.id("accordion__heading-1");
     private final By buttonQuestion3 = By.id("accordion__heading-2");
     private final By buttonQuestion4 = By.id("accordion__heading-3");
@@ -109,30 +109,5 @@ public class HomePageLocators {
     }
     public String getAnswer8() {
         return driver.findElement(answer8).getText();
-    }
-
-    public boolean isAnswer1visioble() {
-        return driver.findElement(answer1).isDisplayed();
-    }
-    public boolean isAnswer2visioble() {
-        return driver.findElement(answer2).isDisplayed();
-    }
-    public boolean isAnswer3visioble() {
-        return driver.findElement(answer3).isDisplayed();
-    }
-    public boolean isAnswer4visioble() {
-        return driver.findElement(answer4).isDisplayed();
-    }
-    public boolean isAnswer5visioble() {
-        return driver.findElement(answer5).isDisplayed();
-    }
-    public boolean isAnswer6visioble() {
-        return driver.findElement(answer6).isDisplayed();
-    }
-    public boolean isAnswer7visioble() {
-        return driver.findElement(answer7).isDisplayed();
-    }
-    public boolean isAnswer8visioble() {
-        return driver.findElement(answer8).isDisplayed();
     }
 }

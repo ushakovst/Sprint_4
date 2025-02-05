@@ -3,7 +3,6 @@ package Locators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-
 public class OrderPageLocators {
     private final WebDriver driver;
 
@@ -160,13 +159,11 @@ public class OrderPageLocators {
         driver.findElement(buttonOrder).click();
     }
 
-
     //Страница Хотите оформить заказ?
     //Клик по кнопке "Да"
     public void clickButtonYes() {
         driver.findElement(buttonYes).click();
     }
-
 
     //Окошко Заказ оформлен
     //Проверка, действительно ли оформлен заказ

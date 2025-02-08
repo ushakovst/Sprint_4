@@ -1,21 +1,14 @@
-import Locators.HomePageLocators;
-import Locators.OrderPageLocators;
-import org.junit.After;
-import org.junit.Before;
+import locators.HomePageLocators;
+import locators.OrderPageLocators;
+import base.BaseTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.concurrent.TimeUnit;
-
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(Parameterized.class)
-public class OrderTest {
-    private WebDriver driver;
+public class OrderTest extends BaseTest {
     private final String name;
     private final String surname;
     private final String adress;
@@ -25,6 +18,7 @@ public class OrderTest {
     private final String rentalPeriod;
     private final String checkbox;
     private final String comment;
+    private final String headerOrderPlaced = "Заказ оформлен";
 
     public OrderTest(String name, String surname, String adress, String metroStation, String telephone, String deliveryDate, String rentalPeriod, String checkbox, String comment) {
         this.name = name;
@@ -44,16 +38,6 @@ public class OrderTest {
                 {"Алексей", "Шефцов", "Карликовая 25к1", "Фили", "+78005553535", "20.02.2025", "четверо суток", "серая безысходность", "Надеюсь, все заработает"},
                 {"Игорь", "Кругликов", "Мужицкая 14", "Лубянка", "+78005553535", "14.02.2025", "семеро суток", "черный жемчуг", "Да, я богат"},
         };
-    }
-
-
-    @Before
-    public void prepared() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\chromedriver-win64\\chromedriver.exe");
-        driver = new ChromeDriver();
-        //неявное ожидание
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS); //не совсем уверен, что его надо добавлять
-        driver.get("https://qa-scooter.praktikum-services.ru/");
     }
 
     @Test
@@ -88,11 +72,6 @@ public class OrderTest {
         objOrderpage.clickButtonYes(); //тест падает на подтверждении заказа
 
         //Открылось окошко, что заказ оформлен
-        assertThat(objOrderpage.getTextOrderPlaced(),is("Заказ оформлен"));
-    }
-
-    @After
-    public void teardown() {
-        driver.quit();
+        assertThat(objOrderpage.getTextOrderPlaced(),startsWith(headerOrderPlaced));
     }
 }

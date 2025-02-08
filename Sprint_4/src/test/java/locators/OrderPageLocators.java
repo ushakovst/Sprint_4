@@ -1,4 +1,4 @@
-package Locators;
+package locators;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,17 +8,19 @@ public class OrderPageLocators {
 
     //Страница "Для кого самокат"
     //локатор поля "Имя"
-    private final By nameField = By.xpath("/html/body/div/div/div[2]/div[2]/div[1]/input");
+    private final By nameField = By.xpath(".//input[@placeholder='* Имя']");
     //локатор поля "Фамилия"
-    private final By surnameField = By.xpath("/html/body/div/div/div[2]/div[2]/div[2]/input");
+    private final By surnameField = By.xpath(".//input[@placeholder='* Фамилия']");
     //локатор поля "Адрес: куда привезти заказ"
     private final By addressField = By.xpath(".//input[@placeholder='* Адрес: куда привезти заказ']");
     //локатор селектора станций метро
     private final By metroStationsField = By.className("select-search__input");
+    //локатор станции метро, который расположен первым в выпадающем списке
+    private final By metroStationList = By.xpath(".//li[@data-index='0']/button");
     //локатор поля "Телефон"
     private final By telephoneField = By.xpath(".//input[@placeholder='* Телефон: на него позвонит курьер']");
     //локатор кнопки "Далее"
-    private final By buttonNext = By.xpath("/html/body/div/div/div[2]/div[3]/button");
+    private final By buttonNext = By.xpath(".//button[text()='Далее']");
     //локатр заголовка "Для кого самокат", для определения того, открылась ли страница
     private final By headerText = By.className("Order_Header__BZXOb");
 
@@ -26,23 +28,25 @@ public class OrderPageLocators {
     //Страница "Про Аренду"
     //локатор поля "Когда привезти самокат"
     private final By deliveryDateField = By.xpath("/html/body/div/div/div[2]/div[2]/div[1]/div[1]/div/input");
+    //локатор даты в календаре, которая появляется после ввода данных в поле
+    private final By deliveryDateCalendar = By.xpath(".//div[@tabindex='0' and @role='button']");
     //локатор поля "Срок аренды"
     private final By rentalPeriodField = By.className("Dropdown-control");
     //локаторы данных срока аренды
     //сутки
-    private final By oneDay = By.xpath("/html/body/div/div/div[2]/div[2]/div[2]/div[2]/div[1]");
+    private final By oneDay = By.xpath(".//div[text()='сутки']");
     //двое суток
-    private final By twoDays = By.xpath("/html/body/div/div/div[2]/div[2]/div[2]/div[2]/div[2]");
+    private final By twoDays = By.xpath(".//div[text()='двое суток']");
     //трое суток
-    private final By threeDays = By.xpath("/html/body/div/div/div[2]/div[2]/div[2]/div[2]/div[3]");
+    private final By threeDays = By.xpath(".//div[text()='трое суток']");
     //четверо суток
-    private final By fourDays = By.xpath("/html/body/div/div/div[2]/div[2]/div[2]/div[2]/div[4]");
+    private final By fourDays = By.xpath(".//div[text()='четверо суток']");
     //пятеро суток
-    private final By fiveDays = By.xpath("/html/body/div/div/div[2]/div[2]/div[2]/div[2]/div[5]");
+    private final By fiveDays = By.xpath(".//div[text()='пятеро суток']");
     //шестеро суток
-    private final By sixDays = By.xpath("/html/body/div/div/div[2]/div[2]/div[2]/div[2]/div[6]");
+    private final By sixDays = By.xpath(".//div[text()='шестеро суток']");
     //семеро суток
-    private final By sevenDays = By.xpath("/html/body/div/div/div[2]/div[2]/div[2]/div[2]/div[7]");
+    private final By sevenDays = By.xpath(".//div[text()='семеро суток']");
     //локатор чекбокса "черный жемчуг"
     private final By checkboxBlack = By.xpath(".//label[@for='black']");
     //локатор чекбокса "серая безысходность"
@@ -50,7 +54,7 @@ public class OrderPageLocators {
     //локатор поля "Комментарии для курьера"
     private final By commentsField = By.xpath(".//input[@placeholder='Комментарий для курьера']");
     //локатор кнопки "Заказать", для подтверждения заказа
-    private final By buttonOrder = By.xpath("/html/body/div/div/div[2]/div[3]/button[2]");
+    private final By buttonOrder = By.xpath(".//button[text()='Заказать' and @class='Button_Button__ra12g Button_Middle__1CSJM']");
 
     //Страница Хотите оформить заказ?
     //локатор кнопки "Да"
@@ -85,7 +89,7 @@ public class OrderPageLocators {
     public void setMetroStationsField(String station) {
         driver.findElement(metroStationsField).click();
         driver.findElement(metroStationsField).sendKeys(station);
-        driver.findElement(By.xpath(".//li[@data-index='0']/button")).click();
+        driver.findElement(metroStationList).click();
     }
 
     //Заполнение поля "Телефон"
@@ -108,7 +112,7 @@ public class OrderPageLocators {
     public void setDeliveryDateField(String date) {
         driver.findElement(deliveryDateField).click();
         driver.findElement(deliveryDateField).sendKeys(date);
-        driver.findElement(By.xpath(".//div[@tabindex='0' and @role='button']")).click(); //тоже под вопросом
+        driver.findElement(deliveryDateCalendar).click(); //тоже под вопросом
     }
 
     //Заполнение поля "Срок аренды"

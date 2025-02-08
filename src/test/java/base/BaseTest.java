@@ -13,7 +13,6 @@ public class BaseTest {
 
     @Before
     public void prepared() {
-        //System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\chromedriver-win64\\chromedriver.exe");
         driver = BrowserFactory.createDriver("chrome"); //или "firefox"
         //неявное ожидание
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS); //не совсем уверен, что его надо добавлять

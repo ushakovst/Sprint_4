@@ -1,12 +1,9 @@
 import Locators.HomePageLocators;
-import org.junit.Before;
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.junit.Test;
-import org.junit.After;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
@@ -14,16 +11,7 @@ import java.time.Duration;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class QuestionsTest {
-
-    private WebDriver driver;
-
-    @Before
-    public void prepared() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\chromedriver-win64\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-    }
+public class QuestionsTest extends BaseTest {
 
     @Test
     public void checkAnswersTest() {
@@ -33,7 +21,7 @@ public class QuestionsTest {
         objHomePage.clickButtonCookie();
 
         //пролистываем до вопрос/ответ
-        WebElement element = driver.findElement(By.xpath("/html/body/div/div/div/div[5]/div[2]/div/div[1]/div[1]/div"));//(By.id("accordion__heading-24"));
+        WebElement element = driver.findElement(By.xpath("/html/body/div/div/div/div[5]/div[2]/div/div[1]/div[1]/div"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
 
         //клик по кнопке, ожидание появления ответа, его считывание и сравнение
@@ -77,10 +65,5 @@ public class QuestionsTest {
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated((By.xpath(".//div[@id='accordion__panel-7']/p"))));
         assertThat(objHomePage.getAnswer8(), is("Да, обязательно. Всем самокатов! И Москве, и Московской области."));
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
     }
 }
